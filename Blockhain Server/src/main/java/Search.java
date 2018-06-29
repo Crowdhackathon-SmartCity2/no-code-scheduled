@@ -15,7 +15,8 @@ public class Search {
 		String PreHash;
 		File hf = new File(pos + ".txt");
 		File pf = new File(Integer.toString(pos-1) + ".txt");
-		System.out.println();
+		System.out.println(1);
+
 		if(hf.exists() && !hf.isDirectory()) { 
 			BufferedReader br = new BufferedReader(new FileReader(pf));
 			PreHash = br.readLine();
@@ -27,6 +28,7 @@ public class Search {
 			}else {
 				this.result = "Not Valid";
 			}
+			br.close();
 		}else {
             this.result = "Wrong Data";
 		} 

@@ -92,16 +92,14 @@ public class Server extends Block {
 
                 // send response
                 String response = "";
-                String Obj = new String();
+                String Obj = "";
                	response = Num + "\n";
-                System.out.println("run");
                 for (String key : parameters.keySet()) {  
                 	if(key.matches("hash")) {
                 		Obj = (String) parameters.get(key);
                 	}
                     response += key + " = " + parameters.get(key) + "\n";
                 }
-                System.out.println("run");
                 Block hash = new Block(PreviusHash,Obj);
             	write(Num+".txt", hash.getBlockHash());
             	Num++;
@@ -147,19 +145,11 @@ public class Server extends Block {
 
                 // send response
                 String response = "";
-                Object[] Obj = new Object[16];
-                int pos = 0;
-                for (String key : parameters.keySet()) {
-                	if(key.matches("pos")) {
-                    	pos = Integer.parseInt((String) parameters.get(key));
-
-                	}else {
-                		Arrange modify = new Arrange(Obj, key.toLowerCase(), parameters.get(key).toString().toLowerCase());
-                		Obj = modify.getObj();
-                	}
-                }
-                Search src = new Search(pos, Arrays.toString(Obj));
-                System.out.println("end");
+                String Obj = "";
+                String pos = "0";
+                Obj = (String) parameters.get("hash");
+                pos = (String) parameters.get("pos");
+                Search src = new Search(Integer.parseInt(pos), Obj);
                 response = src.getResult();
                 he.sendResponseHeaders(200, response.length());
                 OutputStream os = he.getResponseBody();
