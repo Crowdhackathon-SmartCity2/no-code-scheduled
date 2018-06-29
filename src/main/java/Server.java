@@ -92,15 +92,17 @@ public class Server extends Block {
 
                 // send response
                 String response = "";
-                Object[] Obj = new Object[16];
+                String Obj = new String();
                	response = Num + "\n";
-                for (String key : parameters.keySet()) {
-					Arrange modify = new Arrange(Obj, key.toLowerCase(), parameters.get(key).toString().toLowerCase());
-	               	Obj = modify.getObj();  
+                System.out.println("run");
+                for (String key : parameters.keySet()) {  
+                	if(key.matches("hash")) {
+                		Obj = (String) parameters.get(key);
+                	}
                     response += key + " = " + parameters.get(key) + "\n";
                 }
-                System.out.println(Arrays.toString(Obj));
-                Block hash = new Block(PreviusHash,Arrays.toString(Obj));
+                System.out.println("run");
+                Block hash = new Block(PreviusHash,Obj);
             	write(Num+".txt", hash.getBlockHash());
             	Num++;
             	PreviusHash = hash.getBlockHash();
@@ -108,7 +110,6 @@ public class Server extends Block {
                 he.sendResponseHeaders(200, response.length());
                 OutputStream os = he.getResponseBody();
                 os.write(response.toString().getBytes());
-
                 os.close();
         }
 }
