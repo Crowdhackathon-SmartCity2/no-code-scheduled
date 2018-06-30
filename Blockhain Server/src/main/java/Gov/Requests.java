@@ -62,7 +62,7 @@ public class Requests {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("Requests");
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new MigLayout("", "[grow][]", "[][grow][]"));
@@ -160,13 +160,14 @@ public class Requests {
 							} catch (IOException e1) {
 								e1.printStackTrace();
 							}
-							for(int z=0;z<art;z++) {
+							Arr[i][0] = Integer.toString(art);
+							for(int z=1;z<art;z++) {
 								try {
 									Arr[i][z] = br.readLine();
 								} catch (IOException e1) {
 									e1.printStackTrace();
 								}
-							}						
+							}
 						}
 						
 						
@@ -181,21 +182,28 @@ public class Requests {
 						if(table.getColumnCount()>maxart) {
 							maxart = table.getColumnCount();
 						}
+						int col = 0;
 						
-						writer.println(table.getRowCount()+1);
+						writer.println(count+1);
 						writer.println(maxart);
-						for(int i=0;i<table.getRowCount();i++) {
-							for(int z=0;z<Integer.parseInt(Arr[i][0]);z++) {
-								writer.println(Arr[i][z]);
+						if(maxart != 0) {
+							for(int i=0;i<count;i++) {
+								if(count != 0) {
+									col = Integer.parseInt(Arr[i][0]);
+								}else {
+									col = 0;
+								}
+								for(int z=0;z<col;z++) {
+									writer.println(Arr[i][z]);
+								}
 							}
 						}
-						
 						writer.println("4");
 						writer.println("Car");
 						writer.println(table.getValueAt(row, 0));
 						writer.println(table.getValueAt(row, 1));
 						writer.println(table.getValueAt(row, 2));
-
+						writer.close();
 
 						
 						

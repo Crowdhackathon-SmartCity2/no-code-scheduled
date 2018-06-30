@@ -64,7 +64,7 @@ public class UI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("Gov Application");
 		frame.setBounds(100, 100, 770, 461);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new MigLayout("", "[][grow][][grow][grow][grow]", "[][][][][][][][][]"));
