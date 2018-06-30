@@ -33,6 +33,7 @@ public class UI {
 	protected JComboBox eyeColor;
 	private JLabel lblAmka;
 	private JTextField AMKA;
+	private JButton Requests;
 
 	/**
 	 * Launch the application.
@@ -130,22 +131,19 @@ public class UI {
 		frame.getContentPane().add(Mother, "cell 3 3 3 1,growx");
 		Mother.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Post Data");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Object[] test = MakeObj();
-				Hash hashing = new Hash(Arrays.toString(test));
-				Post("GetGiveData", hashing.getHashCode(), "");
-			}
-		});
-		
 		lblAmka = new JLabel("AMKA");
 		frame.getContentPane().add(lblAmka, "cell 0 4,alignx trailing");
 		
 		AMKA = new JTextField();
 		frame.getContentPane().add(AMKA, "cell 1 4,growx");
 		AMKA.setColumns(10);
-		frame.getContentPane().add(btnNewButton, "cell 1 8,alignx center");
+		
+		Requests = new JButton("Requests");
+		Requests.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Requests req = new Requests();
+			}
+		});
 		
 		JButton btnValidateData = new JButton("Validate Data");
 		btnValidateData.addActionListener(new ActionListener() {
@@ -155,10 +153,20 @@ public class UI {
 				Hash hashing = new Hash(Arrays.toString(test));
 				Post("GetSearch", hashing.getHashCode(), "3");
 				
-				
 			}
 		});
-		frame.getContentPane().add(btnValidateData, "cell 5 8,alignx center");
+		
+		JButton btnNewButton = new JButton("Post Data");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Object[] test = MakeObj();
+				Hash hashing = new Hash(Arrays.toString(test));
+				Post("GetGiveData", hashing.getHashCode(), "");
+			}
+		});
+		frame.getContentPane().add(btnNewButton, "cell 1 6,alignx center");
+		frame.getContentPane().add(btnValidateData, "cell 5 6,alignx center");
+		frame.getContentPane().add(Requests, "cell 1 7 5 1,alignx center");
 		
 		
 	}
@@ -171,6 +179,7 @@ public class UI {
 	      String s = null;
 	      
 	      try {
+	    	  System.out.println(hash);
 	          u = new URL("http://localhost:9000/" + dom +"?pos=" + pos + "&hash=" + hash);
 	          is = u.openStream();        
 	          dis = new DataInputStream(new BufferedInputStream(is));

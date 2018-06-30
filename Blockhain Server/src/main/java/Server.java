@@ -102,6 +102,7 @@ public class Server extends Block {
                 }
                 Block hash = new Block(PreviusHash,Obj);
             	write(Num+".txt", hash.getBlockHash());
+            	write("Users/"+Obj+".txt","");
             	Num++;
             	PreviusHash = hash.getBlockHash();
             	write("config.txt", Num+1, PreviusHash);
