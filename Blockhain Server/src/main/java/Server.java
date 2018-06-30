@@ -47,6 +47,7 @@ public class Server extends Block {
 		server.createContext("/echoHeader", new EchoHeaderHandler());
 		server.createContext("/GetGiveData", new GetGiveHandler());
 		server.createContext("/GetSearch", new GetSearch());
+		server.createContext("/GetSearchUser", new GetSearchUser());
 		server.createContext("/echoPost", new EchoPostHandler());
 		server.setExecutor(null);
 		server.start();
@@ -102,7 +103,7 @@ public class Server extends Block {
                 }
                 Block hash = new Block(PreviusHash,Obj);
             	write(Num+".txt", hash.getBlockHash());
-            	write("Users/"+Obj+".txt","");
+            	write("Users/"+Obj+".txt","0","0");
             	Num++;
             	PreviusHash = hash.getBlockHash();
             	write("config.txt", Num+1, PreviusHash);
@@ -111,7 +112,7 @@ public class Server extends Block {
                 os.write(response.toString().getBytes());
                 os.close();
         }
-}
+	}
 	
 	public class EchoPostHandler implements HttpHandler {
 
@@ -160,6 +161,32 @@ public class Server extends Block {
         }
 }
 	
+	
+	
+	public class GetSearchUser implements HttpHandler {
+
+        public void handle(HttpExchange he) throws IOException {
+                // parse request
+                Map<String, Object> parameters = new HashMap<String, Object>();
+                URI requestedUri = he.getRequestURI();
+                String query = requestedUri.getRawQuery();
+                parseQuery(query, parameters);
+
+                // send response
+                String response = "";
+                for (String key : parameters.keySet()) {  
+                	if(key.matches("hash")) {
+                		//Code
+                	}
+                    response += key + " = " + parameters.get(key) + "\n";
+                }
+                //Code
+                he.sendResponseHeaders(200, response.length());
+                OutputStream os = he.getResponseBody();
+                os.write(response.toString().getBytes());
+                os.close();
+        }
+	}
 	
 	
 	public static void parseQuery(String query, Map<String, 
