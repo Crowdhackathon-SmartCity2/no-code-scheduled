@@ -27,6 +27,7 @@ public class SetArtbs {
 	private JTextField Month;
 	private JTextField Day;
 	private JTextField Number;
+	private JTextField Income;
 
 	/**
 	 * Launch the application.
@@ -62,12 +63,14 @@ public class SetArtbs {
 	 * Create the application.
 	 */
 	public SetArtbs() {
-		initializeCar();
+		initializeIn();
 	}
 	
 	public SetArtbs(int index) {
 		if(index == 1) {
 			initializeCar();
+		}else if (index == 2) {
+			initializeIn();
 		}
 	}
 
@@ -76,9 +79,9 @@ public class SetArtbs {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 450, 141);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[][grow][grow][grow]", "[][][][]"));
+		frame.getContentPane().setLayout(new MigLayout("", "[][grow]", "[][][]"));
 		
 	}
 	
@@ -197,6 +200,99 @@ public class SetArtbs {
 		frame.getContentPane().add(Number, "cell 1 2 3 1,growx");
 		Number.setColumns(10);
 		frame.getContentPane().add(btnNewButton, "cell 1 3 2 1,alignx center");
+
+	}
+
+
+	private void initializeIn() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 141);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new MigLayout("", "[][grow]", "[][][]"));
+		
+		JLabel lblIncome = new JLabel("Income:");
+		frame.getContentPane().add(lblIncome, "cell 0 0,alignx trailing");
+		
+		Income = new JTextField();
+		frame.getContentPane().add(Income, "cell 1 0,growx");
+		Income.setColumns(10);
+		
+		JButton Submit = new JButton("Submit");
+		Submit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(!Income.getText().matches("") && Income.getText() != null) {
+					int p = JOptionPane.showOptionDialog(frame, "Tap the id to the scanner", "Identidy", JOptionPane.OK_OPTION, JOptionPane.WARNING_MESSAGE, null, null, 0);
+					if(p == JOptionPane.YES_OPTION) {
+
+							File responce = new File("response.txt");
+							if(responce.exists() && !responce.isDirectory()) { 
+								 
+								BufferedReader br = null;
+								try {
+									br = new BufferedReader(new FileReader(responce));
+								} catch (FileNotFoundException e1) {
+									e1.printStackTrace();
+								}
+								int count = 0;
+								try {
+									count = Integer.parseInt(br.readLine());
+								} catch (NumberFormatException | IOException e2) {
+									e2.printStackTrace();
+								}
+								String[][] data = new String[count][4];
+								for(int i=0;i<count;i++) {
+									try {
+										data[i][0] = br.readLine();
+										data[i][1] = br.readLine();
+										data[i][2] = br.readLine();
+										data[i][3] = "d407c2e1c75abf778d3ca5edcd9df9d6da04b8628fff80fbbfee4086af3cc01e";
+									} catch (IOException e1) {
+										e1.printStackTrace();
+									}
+								}
+								PrintWriter pr = null;
+								try {
+									pr = new PrintWriter("response.txt");
+								} catch (FileNotFoundException e2) {
+									e2.printStackTrace();
+								}
+								pr.println(count+1);
+								for(int i=0;i<count;i++) {
+									for(int z=0;z<4;z++) {
+										pr.println(data[i][z]);
+									}
+								}
+								pr.println(Income.getText().toString().toLowerCase());
+						        pr.println("98787654332132");
+						        pr.println(" ");
+						        pr.println("d407c2e1c75abf778d3ca5edcd9df9d6da04b8628fff80fbbfee4086af3cc01e");
+						        pr.close();
+								try {
+									br.close();
+								} catch (IOException e1) {
+									e1.printStackTrace();
+								}
+							}else {
+								PrintWriter writer = null;
+								try {
+									writer = new PrintWriter("response.txt", "UTF-8");
+								} catch (FileNotFoundException | UnsupportedEncodingException e1) {
+									e1.printStackTrace();
+								}
+								writer.println(1);
+						        writer.println(Income.getText().toString().toLowerCase());
+						        writer.println("98787654332132");
+						        writer.println(" ");
+						        writer.println("d407c2e1c75abf778d3ca5edcd9df9d6da04b8628fff80fbbfee4086af3cc01e");
+						        writer.close();
+						    }
+						
+							
+						}
+					}
+			}
+		});
+		frame.getContentPane().add(Submit, "cell 0 2 2 1,alignx center");
 
 	}
 

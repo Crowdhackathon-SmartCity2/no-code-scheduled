@@ -76,6 +76,8 @@ public class Search {
 		String term = "";
 		if(ID == 3) {
 			term = "Car";
+		}else if (ID == 4) {
+			term = "Income";
 		}
 		
 		return term;

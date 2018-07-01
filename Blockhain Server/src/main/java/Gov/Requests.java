@@ -199,7 +199,7 @@ public class Requests {
 							}
 						}
 						writer.println("4");
-						writer.println("Car");
+						writer.println("Income");
 						writer.println(table.getValueAt(row, 0));
 						writer.println(table.getValueAt(row, 1));
 						writer.println(table.getValueAt(row, 2));

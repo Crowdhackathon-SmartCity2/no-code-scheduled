@@ -85,7 +85,7 @@ public class UI {
 		frame.getContentPane().add(Status, "cell 1 0 2 1");
 		
 		final JComboBox VerOpt = new JComboBox();
-		VerOpt.setModel(new DefaultComboBoxModel(new String[] {"Please select verification query", "Is user older than 18?", "Give me IBAN", "Is having valid driving license?", "Does own property ... ?", "Is a 3 years old driver?"}));
+		VerOpt.setModel(new DefaultComboBoxModel(new String[] {"Please select verification query", "Is user older than 18?", "Give me IBAN", "Is having valid driving license?", "Is income below 5.000\u20AC?", "Does own property ... ?", "Is a 3 years old driver?"}));
 		frame.getContentPane().add(VerOpt, "cell 0 1 3 1,growx");
 		
 		JButton Ver = new JButton("Verify");

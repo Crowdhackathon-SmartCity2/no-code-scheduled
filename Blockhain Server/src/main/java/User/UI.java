@@ -51,7 +51,7 @@ public class UI {
 		frame.getContentPane().add(lblNewLabel, "cell 0 0,alignx center");
 		
 		final JComboBox Submit = new JComboBox();
-		Submit.setModel(new DefaultComboBoxModel(new String[] {"Please Select", "Driving License", "Education Certification", "Property Registration"}));
+		Submit.setModel(new DefaultComboBoxModel(new String[] {"Please Select", "Driving License", "Income", "Education Certification", "Property Registration"}));
 		frame.getContentPane().add(Submit, "cell 0 1,growx");
 		
 		JButton Next = new JButton("Next");
