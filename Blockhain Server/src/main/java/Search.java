@@ -42,7 +42,7 @@ public class Search {
 	
 		String response = "Not Valid";
 		String term = GiveTerm(queryID);
-		File f = new File("Users/",hash + ".txt");
+		File f = new File("Users/" + hash + ".txt");
 		if(f.exists() && !f.isDirectory()) { 
 			BufferedReader br = new BufferedReader(new FileReader(f));
 			int count = Integer.parseInt(br.readLine());
@@ -51,8 +51,8 @@ public class Search {
 			for (int i=0;i<count;i++) {
 				int col = Integer.parseInt(br.readLine());
 				Arr[i][0] = Integer.toString(col);
-				for(int z=1;z<maxcol;z++) {
-					Arr[i][z] = br.readLine();
+				for(int z=1;z<col;z++) {
+					Arr[i][z] = br.readLine();;
 					if(Arr[i][z].matches(term)) {
 						response = "Valid";
 					}
@@ -61,7 +61,7 @@ public class Search {
 			br.close();
 			this.validation = response;
 		}else {
-            this.result = "Wrong Data";
+            this.validation = "Wrong Data";
 		} 
 
 		
@@ -74,7 +74,7 @@ public class Search {
 	private String GiveTerm(int ID) {
 
 		String term = "";
-		if(ID == 1) {
+		if(ID == 3) {
 			term = "Car";
 		}
 		
