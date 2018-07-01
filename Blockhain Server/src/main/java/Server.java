@@ -11,7 +11,6 @@ import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -174,13 +173,18 @@ public class Server extends Block {
 
                 // send response
                 String response = "";
-                for (String key : parameters.keySet()) {  
-                	if(key.matches("hash")) {
-                		//Code
-                	}
-                    response += key + " = " + parameters.get(key) + "\n";
+                String Obj = "";
+                String pos = "0";
+                String queryID = "";
+                Obj = (String) parameters.get("hash");
+                pos = (String) parameters.get("pos");
+                queryID = (String) parameters.get("queryID");
+                Search src = new Search(Integer.parseInt(pos), Obj);
+                if(src.getResult().matches("Valid")) {
+                	Search qna = new Search(Obj, Integer.parseInt(queryID));
+                	response = qna.getValidation();
                 }
-                //Code
+                
                 he.sendResponseHeaders(200, response.length());
                 OutputStream os = he.getResponseBody();
                 os.write(response.toString().getBytes());
