@@ -70,7 +70,7 @@ Blockchain Server> src/main/java > Buissnes > UI.java
 From this app is able to Validate the Income of the user and the Driving License.
 The other validations works as a mock up.
 
-##Additonal Informations
+## Additonal Informations
 
 ### What is working
 
@@ -94,7 +94,7 @@ We think about a DLT with Hyperledger. The changes have to made is the connectio
 
 ## Consensus
 
-The user’s data are submitted to the submission system in order to be authenticated only once as a type of information. If the request become accepted then with the unique hash ID (differential with block hash) the information-certificate is being added to the user account or else the information is being deleted. This process is estimated for the scale of Greece to be done within one business day after the initial run. Within the day, the information is being verified and at the night, where there is low demand on the servers, the information is being delivered to the nodes.
+The userâ€™s data are submitted to the submission system in order to be authenticated only once as a type of information. If the request become accepted then with the unique hash ID (differential with block hash) the information-certificate is being added to the user account or else the information is being deleted. This process is estimated for the scale of Greece to be done within one business day after the initial run. Within the day, the information is being verified and at the night, where there is low demand on the servers, the information is being delivered to the nodes.
 
 ## Built With
 
