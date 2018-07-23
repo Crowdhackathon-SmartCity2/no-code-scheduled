@@ -63,7 +63,6 @@ public class UI {
 			    	
 			    	Status.setText("Valid");
 			    	Status.setForeground(Color.GREEN);
-			    	
 			    }
 			  }
 			}, 2*1000);

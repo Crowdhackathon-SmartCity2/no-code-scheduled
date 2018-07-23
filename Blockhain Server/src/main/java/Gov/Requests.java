@@ -199,7 +199,12 @@ public class Requests {
 							}
 						}
 						writer.println("4");
-						writer.println("Income");
+						String tt = model.getValueAt(table.getSelectedRow(), 2).toString();
+						if(tt.matches(" ")){	
+							writer.println("Income");
+						}else{
+							writer.println("Car");
+						}
 						writer.println(table.getValueAt(row, 0));
 						writer.println(table.getValueAt(row, 1));
 						writer.println(table.getValueAt(row, 2));

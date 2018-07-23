@@ -8,7 +8,6 @@ public class Main {
 			@SuppressWarnings("unused")
 			Server testt = new Server();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
